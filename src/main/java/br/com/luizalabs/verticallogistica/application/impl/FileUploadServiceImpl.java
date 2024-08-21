@@ -4,7 +4,7 @@ import br.com.luizalabs.verticallogistica.application.IFileUploadService;
 import br.com.luizalabs.verticallogistica.core.domain.dto.OrderDto;
 import br.com.luizalabs.verticallogistica.core.domain.dto.ProductsDto;
 import br.com.luizalabs.verticallogistica.core.domain.dto.UserDto;
-import org.springframework.core.annotation.Order;
+import br.com.luizalabs.verticallogistica.core.exception.ArquivoInvalidoException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Service
-public class FileUploadService implements IFileUploadService {
+public class FileUploadServiceImpl implements IFileUploadService {
 
 
     @Override
@@ -60,14 +60,16 @@ public class FileUploadService implements IFileUploadService {
             System.out.println(userMap);
 
         }catch(IOException e){
-            System.out.println("erro ao ler arquivo ::::" + e.getMessage());
+            throw new ArquivoInvalidoException();
+        }catch(Exception e){
+            throw new ArquivoInvalidoException();
         }finally {
             try {
                 if(reader != null){
                     reader.close();
                 }
             }catch(IOException e){
-                System.out.println("erro ao fechar arquivo ::::" + e.getMessage());
+                throw new ArquivoInvalidoException();
             }
         }
 
