@@ -1,0 +1,9 @@
+services:
+  postgres_vertical:
+    container_name: postgres_api_vertical
+    image: postgres:16.1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
