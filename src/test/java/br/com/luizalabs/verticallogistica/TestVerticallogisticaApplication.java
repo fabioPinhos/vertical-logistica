@@ -1,11 +1,14 @@
 package br.com.luizalabs.verticallogistica;
 
-import org.springframework.boot.SpringApplication;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class TestVerticallogisticaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.from(VerticallogisticaApplication::main).with(TestcontainersConfiguration.class).run(args);
+	@Test
+	void contextLoads(){
+
 	}
 
 }
