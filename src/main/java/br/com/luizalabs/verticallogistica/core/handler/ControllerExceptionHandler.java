@@ -1,6 +1,7 @@
 package br.com.luizalabs.verticallogistica.core.handler;
 
 import br.com.luizalabs.verticallogistica.core.exception.ArquivoInvalidoException;
+import br.com.luizalabs.verticallogistica.core.exception.ArquivoVazioException;
 import br.com.luizalabs.verticallogistica.core.exception.ErroAoFecharArquivoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,6 +24,13 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(ErroAoFecharArquivoException.class)
     public ErrorResponse handleFecharArquivo(final ErroAoFecharArquivoException e){
         return new ErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY, "erro ao fechar arquivo", null);
+    }
+
+    @ResponseBody
+    @ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
+    @ExceptionHandler(ArquivoVazioException.class)
+    public ErrorResponse handleArquivoVazio(final ArquivoVazioException e){
+        return new ErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY, "Arquivo esta vazio", null);
     }
 
 }
