@@ -1,0 +1,8 @@
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE TABLE usuario (
+    id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    order_id INT,
+    FOREIGN KEY(order_id) REFERENCES pedido(id) ON DELETE CASCADE
+);

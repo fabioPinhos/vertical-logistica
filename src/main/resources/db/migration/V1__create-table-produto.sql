@@ -1,0 +1,6 @@
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE TABLE produto (
+    id INT PRIMARY KEY,
+    valor FLOAT NOT NULL
+);

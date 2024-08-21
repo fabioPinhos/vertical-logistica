@@ -1,6 +1,6 @@
 services:
   postgres_vertical:
-    container_name: postgres_api_vertical
+    container_name: postgres_api_luizalabs
     image: postgres:16.1
     environment:
       POSTGRES_USER: postgres
