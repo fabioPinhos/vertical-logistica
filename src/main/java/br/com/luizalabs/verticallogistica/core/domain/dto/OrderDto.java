@@ -4,6 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-public record OrderDto(Integer oder_id, BigDecimal total, Date date, List<ProductsDto> products) {
+public record OrderDto(long order_id, BigDecimal total, Date date, List<ProductsDto> products) {
 
 }
