@@ -10,6 +10,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class FileUtil {
@@ -27,19 +29,22 @@ public class FileUtil {
             reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
 
             while ((line = reader.readLine()) != null) {
+
                 String userId = Objects.requireNonNull(formatarNumero(line.substring(0,10).trim()));
                 String userName = line.substring(10,55).trim();
                 String orderId = Objects.requireNonNull(formatarNumero(line.substring(55,65).trim()));
                 String prodId = Objects.requireNonNull(formatarNumero(line.substring(65,75).trim()));
                 BigDecimal value = new BigDecimal(line.substring(75,87).trim());
-                String data = line.substring(87,95).trim();
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+                Date data = formatter.parse(line.substring(87,95).trim());
 
                 UserDto userDto = userMap.computeIfAbsent(Integer.parseInt(userId), id -> {
                     return new UserDto(id, userName, new ArrayList<OrderDto>());
                 });
 
                 OrderDto orderDto1 = orderMap.computeIfAbsent(Integer.parseInt(orderId), id -> {
-                    OrderDto dto = new OrderDto(id, value, new Date(), new ArrayList<ProductsDto>());
+                    OrderDto dto = new OrderDto(id, value, data, new ArrayList<ProductsDto>());
                     userDto.orders().add(dto);
                     return dto;
                 });
@@ -50,7 +55,6 @@ public class FileUtil {
 
                 orderDto1.products().add(productsDto1);
             }
-
         } catch(Exception e){
             throw new ArquivoInvalidoException();
         } finally {
