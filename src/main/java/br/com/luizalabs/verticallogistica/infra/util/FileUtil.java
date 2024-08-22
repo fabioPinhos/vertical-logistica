@@ -14,7 +14,7 @@ import java.util.*;
 
 public class FileUtil {
 
-    public static void readFile(MultipartFile file) throws IOException {
+    public static List<UserDto> readFile(MultipartFile file) throws IOException {
 
         BufferedReader reader = null;
         String line;
@@ -34,8 +34,6 @@ public class FileUtil {
                 BigDecimal value = new BigDecimal(line.substring(75,87).trim());
                 String data = line.substring(87,95).trim();
 
-                System.out.println(userId);
-
                 UserDto userDto = userMap.computeIfAbsent(Integer.parseInt(userId), id -> {
                     return new UserDto(id, userName, new ArrayList<OrderDto>());
                 });
@@ -52,13 +50,10 @@ public class FileUtil {
 
                 orderDto1.products().add(productsDto1);
             }
-            System.out.println(userMap);
 
-        }catch(IOException e){
+        } catch(Exception e){
             throw new ArquivoInvalidoException();
-        }catch(Exception e){
-            throw new ArquivoInvalidoException();
-        }finally {
+        } finally {
             try {
                 if(reader != null){
                     reader.close();
@@ -67,6 +62,8 @@ public class FileUtil {
                 throw new ArquivoInvalidoException();
             }
         }
+
+        return new ArrayList<>(userMap.values());
 
     }
 
