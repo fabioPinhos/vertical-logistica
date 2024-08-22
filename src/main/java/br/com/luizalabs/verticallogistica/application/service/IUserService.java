@@ -6,4 +6,6 @@ import br.com.luizalabs.verticallogistica.core.domain.entity.User;
 public interface IUserService {
 
     User create(UserDto dto);
+
+    User getUserById(Long id);
 }
