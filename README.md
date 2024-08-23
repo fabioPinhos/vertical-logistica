@@ -34,8 +34,6 @@ mvn spring-boot:run
 ```
 <h2 id="routes">📍 API Endpoints</h2>
 
-Here you can list the main routes of your API, and what are their expected request bodies.
-​
 | route               | description                                          
 |----------------------|-----------------------------------------------------
 | <kbd>POST /cartoes</kbd>     | Criar novo cartão [response details](#get-auth-detail)
