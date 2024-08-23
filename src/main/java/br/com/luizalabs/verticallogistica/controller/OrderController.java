@@ -26,7 +26,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Orders>> getOrderById(){
+    public ResponseEntity<List<Orders>> findAll(){
         return ResponseEntity.ok(service.findAll());
     }
 

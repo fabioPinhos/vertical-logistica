@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ControllerExceptionHandler {
 
     @ResponseBody
-    @ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ArquivoInvalidoException.class)
-    public ErrorResponse handleArquivoInvalido(final ArquivoInvalidoException e){
-        return new ErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY, "Erro ao ler arquivo", null);
+    public ErrorResponse handleArquivoInvalido_BAD_REQUEST(final ArquivoInvalidoException e){
+        return new ErrorResponse(HttpStatus.BAD_REQUEST, "Erro ao ler arquivo", null);
     }
 
     @ResponseBody
@@ -25,10 +25,10 @@ public class ControllerExceptionHandler {
     }
 
     @ResponseBody
-    @ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ArquivoVazioException.class)
     public ErrorResponse handleArquivoVazio(final ArquivoVazioException e){
-        return new ErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY, "Arquivo esta vazio", null);
+        return new ErrorResponse(HttpStatus.BAD_REQUEST, "Arquivo esta vazio", null);
     }
 
     @ResponseBody
