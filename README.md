@@ -36,22 +36,15 @@ mvn spring-boot:run
 
 | route                               | description                                          
 |-------------------------------------|-----------------------------------------------------
-| <kbd>POST /v1/api/files/upload</kbd> | Uploda do arquivo [response details](#get-auth-detail)
-| <kbd>GET /v1/api/users/{id}</kbd>   | Obter Usuario, onde {id} é o id do usuario [request details](#post-auth-detail).
-| <kbd>GET /v1/api/orders/{id}</kbd>  | Obter Usuario, onde {id} é o id do pedido [request details](#post-auth-detail).
-| <kbd>GET /v1/api/orders/</kbd>      | Obter todos os pedidos [request details](#post-trans-detail).
+| <kbd>POST /v1/api/files/upload</kbd> | Uploda do arquivo [response details](#get-detail)
+| <kbd>GET /v1/api/users/{id}</kbd>   | Obter Usuario, onde {id} é o id do usuario [request details](#users-detail).
+| <kbd>GET /v1/api/orders/{id}</kbd>  | Obter Usuario, onde {id} é o id do pedido [request details](#orders-id-detail).
+| <kbd>GET /v1/api/orders/</kbd>      | Obter todos os pedidos [request details](#orders-detail).
 
-<h3 id="get-auth-detail">POST /cartoes</h3>
+<h3 id="get-detail">POST /cartoes</h3>
 
 **RESPONSE**
-```json
-{
-    "numeroCartao": "6549873025634501",
-    "senha": "1234"
-}
-```
-
-<h3 id="post-auth-detail">POST /v1/api/files/upload</h3>
+<h3 id="get-detail">POST /v1/api/files/upload</h3>
 
 **REQUEST**
 ```json
@@ -88,7 +81,7 @@ mvn spring-boot:run
   495.15
 ```
 
-<h3 id="post-trans-detail">GET /v1/api/users/{id}</h3>
+<h3 id="users-detail">GET /v1/api/users/{id}</h3>
 
 **REQUEST**
 ```json
@@ -103,7 +96,7 @@ mvn spring-boot:run
   OK
 ```
 
-<h3 id="post-trans-detail">GET /v1/api/orders/{id}</h3>
+<h3 id="orders-id-detail">GET /v1/api/orders/{id}</h3>
 
 **REQUEST**
 ```json
@@ -127,7 +120,7 @@ mvn spring-boot:run
   OK
 ```
 
-<h3 id="post-trans-detail">GET /v1/api/orders</h3>
+<h3 id="orders-detail">GET /v1/api/orders</h3>
 
 **REQUEST**
 ```json
