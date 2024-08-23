@@ -34,11 +34,12 @@ mvn spring-boot:run
 ```
 <h2 id="routes">📍 API Endpoints</h2>
 
-| route               | description                                          
-|----------------------|-----------------------------------------------------
-| <kbd>POST /cartoes</kbd>     | Criar novo cartão [response details](#get-auth-detail)
-| <kbd>POST /cartoes/{numeroCartao}</kbd>     | Obter saldo do Cartão, onde {numeroCartao} é o número do cartão [request details](#post-auth-detail).
-| <kbd>POST /transacoes/</kbd>     | Realizar uma Transação [request details](#post-trans-detail).
+| route                               | description                                          
+|-------------------------------------|-----------------------------------------------------
+| <kbd>POST /v1/api/files/upload</kbd> | Uploda do arquivo [response details](#get-auth-detail)
+| <kbd>GET /v1/api/users/{id}</kbd>   | Obter Usuario, onde {id} é o id do usuario [request details](#post-auth-detail).
+| <kbd>GET /v1/api/orders/{id}</kbd>  | Obter Usuario, onde {id} é o id do pedido [request details](#post-auth-detail).
+| <kbd>GET /v1/api/orders/</kbd>      | Obter todos os pedidos [request details](#post-trans-detail).
 
 <h3 id="get-auth-detail">POST /cartoes</h3>
 
@@ -50,11 +51,36 @@ mvn spring-boot:run
 }
 ```
 
-<h3 id="post-auth-detail">POST /cartoes/{numeroCartao}</h3>
+<h3 id="post-auth-detail">POST /v1/api/files/upload</h3>
 
 **REQUEST**
 ```json
-6549873025634501
+[
+  {
+    "user_id": 1,
+    "name": "Sammie Baumbach",
+    "orders": [
+      {
+        "order_id": 7,
+        "total": 96.47,
+        "date": "2021-05-28T03:00:00.000+00:00",
+        "products": [
+          {
+            "product_id": 2,
+            "value": 1578.57
+          },
+          {
+            "product_id": 2,
+            "value": 1578.57
+          },
+          {
+            "product_id": 5,
+            "value": 1288.77
+          }
+        ]
+      }
+  }
+]
 ```
 
 **RESPONSE**
@@ -62,7 +88,46 @@ mvn spring-boot:run
   495.15
 ```
 
-<h3 id="post-trans-detail">POST /cartoes/{numeroCartao}</h3>
+<h3 id="post-trans-detail">GET /v1/api/users/{id}</h3>
+
+**REQUEST**
+```json
+{
+  "user_id": 55,
+  "name": "Kris Lockman"
+}
+```
+
+**RESPONSE**
+```json
+  OK
+```
+
+<h3 id="post-trans-detail">GET /v1/api/orders/{id}</h3>
+
+**REQUEST**
+```json
+{
+  "order_id": 55,
+  "total": 279.44,
+  "date": "2024-08-22",
+  "products": {
+    "product_id": 2,
+    "value": 1578.57
+  },
+  "users": {
+    "user_id": 6,
+    "name": "Mittie Crona DDS"
+  }
+}
+```
+
+**RESPONSE**
+```json
+  OK
+```
+
+<h3 id="post-trans-detail">GET /v1/api/orders</h3>
 
 **REQUEST**
 ```json
@@ -75,8 +140,75 @@ mvn spring-boot:run
 
 **RESPONSE**
 ```json
-  OK
+  [
+  {
+    "order_id": 177,
+    "total": 770.68,
+    "date": "2024-08-22T13:49:00.301+00:00",
+    "products": {
+      "product_id": 5,
+      "value": 1288.77
+    },
+    "users": {
+      "user_id": 17,
+      "name": "Ethan Langworth"
+    }
+  },
+  {
+    "order_id": 237,
+    "total": 436.14,
+    "date": "2024-08-22T13:49:00.305+00:00",
+    "products": {
+      "product_id": 5,
+      "value": 1288.77
+    },
+    "users": {
+      "user_id": 22,
+      "name": "Rosendo Hartmann"
+    }
+  },
+  {
+    "order_id": 163,
+    "total": 1174.45,
+    "date": "2024-08-22T13:49:00.301+00:00",
+    "products": {
+      "product_id": 1,
+      "value": 673.49
+    },
+    "users": {
+      "user_id": 17,
+      "name": "Ethan Langworth"
+    }
+  },
+  {
+    "order_id": 227,
+    "total": 1481.9,
+    "date": "2024-08-22T13:49:00.303+00:00",
+    "products": {
+      "product_id": 3,
+      "value": 1836.74
+    },
+    "users": {
+      "user_id": 21,
+      "name": "Alberto Murray"
+    }
+  },
+  {
+    "order_id": 165,
+    "total": 1441.79,
+    "date": "2024-08-22T13:49:00.301+00:00",
+    "products": {
+      "product_id": 6,
+      "value": 961.37
+    },
+    "users": {
+      "user_id": 17,
+      "name": "Ethan Langworth"
+    }
+  }]
 ```
+
+
 <h2 id="technologies">💻 Stack utilizada</h2>
 
 ![Java](https://img.shields.io/badge/Java-11-green?style=plastic&logo=java)
