@@ -9,7 +9,7 @@
 <h3>Prerequisites</h3>
 
 
-- Rodar o docker-compose que foi enviado juntamente com o projeto, o SGDG escolhido foi o MySQL 5.7.
+- Rodar o docker-compose que foi enviado juntamente com o projeto, o SGDG escolhido foi o PostGres.
 - Possuir o [github](https://github.com/) devidamente instalado e configurado
 - Possuir o [Apache Maven](https://maven.apache.org/download.cgi) devidamente instalado e configurado.
 - Possuir instalado Java Development Kit (JDK) - versão 11 [download aqui](https://www.oracle.com/java/technologies/downloads/#java11)
